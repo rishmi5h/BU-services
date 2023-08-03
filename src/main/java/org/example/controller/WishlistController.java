@@ -15,12 +15,12 @@ public class WishlistController {
         this.wishlistService = wishlistService;
     }
 
-    @GetMapping("/")
+    @GetMapping
     public Wishlist getWishlist() {
         return wishlistService.getWishlist();
     }
 
-    @PostMapping("/")
+    @PostMapping
     public Wishlist addToWishlist(Product product) {
         return wishlistService.addToWishlist(product);
     }

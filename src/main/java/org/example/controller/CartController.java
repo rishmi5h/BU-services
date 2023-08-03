@@ -3,7 +3,6 @@ package org.example.controller;
 import org.example.model.Cart;
 import org.example.model.Product;
 import org.example.service.CartService;
-import org.example.service.ProductService;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
@@ -16,12 +15,12 @@ public class CartController {
         this.cartService = cartService;
     }
 
-    @GetMapping("/")
-    public Iterable<Cart> getCart() {
+    @GetMapping
+    public String getCart() {
         return  cartService.getCart();
     }
 
-    @PostMapping("/")
+    @PostMapping
     public Iterable<Cart> addToCart(@RequestBody Product product) {
         return  cartService.addToCart(product);
     }
