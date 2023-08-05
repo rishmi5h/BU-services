@@ -1,20 +1,20 @@
 package org.rishmi5h.model;
 
 import jakarta.persistence.*;
-import lombok.Data;
+
 import java.util.Date;
 
 @Entity
-@Data
+@Table(name = "Wishlist")
 public class Wishlist {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
 
-    @OneToOne(targetEntity = User.class, fetch = FetchType.EAGER)
+    @OneToOne(targetEntity = Users.class, fetch = FetchType.EAGER)
     @JoinColumn(nullable = false, name = "user_id")
-    private User user;
+    private Users user;
 
     @Column(name = "created_date")
     private Date createdDate;
@@ -27,11 +27,41 @@ public class Wishlist {
     }
 
 
-    public Wishlist(User user, Product product) {
+    public Wishlist(Users user, Product product) {
         this.user = user;
         this.product = product;
         this.createdDate = new Date();
     }
 
+    public Integer getId() {
+        return id;
+    }
 
+    public void setId(Integer id) {
+        this.id = id;
+    }
+
+    public Product getProduct() {
+        return product;
+    }
+
+    public void setProduct(Product product) {
+        this.product = product;
+    }
+
+    public Date getCreatedDate() {
+        return createdDate;
+    }
+
+    public void setCreatedDate(Date createdDate) {
+        this.createdDate = createdDate;
+    }
+
+    public Users getUser() {
+        return user;
+    }
+
+    public void setUser(Users user) {
+        this.user = user;
+    }
 }
