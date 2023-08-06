@@ -10,7 +10,7 @@ public class Category {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer id;
+    private Long categoryId;
 
     @Column(name = "category_name")
     private  String categoryName;
@@ -63,7 +63,7 @@ public class Category {
 
     @Override
     public String toString() {
-        return "User {category id=" + id + ", category name='" + categoryName + "', description='" + description + "'}";
+        return "User {category categoryId=" + categoryId + ", category name='" + categoryName + "', description='" + description + "'}";
     }
 
     public String getImageUrl() {
@@ -74,11 +74,11 @@ public class Category {
         this.imageUrl = imageUrl;
     }
 
-    public Integer getId() {
-        return id;
+    public Long getCategoryId() {
+        return categoryId;
     }
 
-    public void setId(Integer id) {
-        this.id = id;
+    public void setCategoryId(Long categoryId) {
+        this.categoryId = categoryId;
     }
 }

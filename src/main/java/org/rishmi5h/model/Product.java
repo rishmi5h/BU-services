@@ -12,7 +12,7 @@ public class Product {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer id;
+    private long productId;
 
     private String name;
     private String imageURL;
@@ -44,12 +44,12 @@ public class Product {
         this.category = category;
     }
 
-    public Integer getId() {
-        return id;
+    public Long getProductId() {
+        return productId;
     }
 
-    public void setId(Integer id) {
-        this.id = id;
+    public void setId(long productId) {
+        this.productId = productId;
     }
 
     public String getName() {
@@ -95,7 +95,7 @@ public class Product {
     @Override
     public String toString() {
         return "Product{" +
-                "id=" + id +
+                "productId=" + productId +
                 ", name='" + name + '\'' +
                 ", imageURL='" + imageURL + '\'' +
                 ", price=" + price +

@@ -12,14 +12,14 @@ public class Cart {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer id;
+    private Long cartId;
 
 
     @Column(name = "created_date")
     private Date createdDate;
 
     @ManyToOne
-    @JoinColumn(name = "product_id", referencedColumnName = "id")
+    @JoinColumn(name = "product_id", referencedColumnName = "productId")
     private Product product;
 
     @JsonIgnore
@@ -40,12 +40,12 @@ public class Cart {
         this.createdDate = new Date();
     }
 
-    public Integer getId(){
-        return this.getId();
+    public Long getCartId(){
+        return this.getCartId();
     }
 
-    public void setId(Integer id) {
-        this.id = id;
+    public void setCartId(Long cartId) {
+        this.cartId = cartId;
     }
 
     public Users getUser() {

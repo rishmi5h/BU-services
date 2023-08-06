@@ -9,7 +9,7 @@ import java.util.Date;
 public class Wishlist {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer id;
+    private Long wishlistId;
 
 
     @OneToOne(targetEntity = Users.class, fetch = FetchType.EAGER)
@@ -33,12 +33,12 @@ public class Wishlist {
         this.createdDate = new Date();
     }
 
-    public Integer getId() {
-        return id;
+    public Long getWishlistId() {
+        return wishlistId;
     }
 
-    public void setId(Integer id) {
-        this.id = id;
+    public void setWishlistId(Long wishlistId) {
+        this.wishlistId = wishlistId;
     }
 
     public Product getProduct() {
