@@ -3,6 +3,8 @@ package org.rishmi5h.controller;
 import org.rishmi5h.model.Product;
 import org.rishmi5h.model.Wishlist;
 import org.rishmi5h.service.WishlistService;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
@@ -21,12 +23,14 @@ public class WishlistController {
     }
 
     @PostMapping
-    public Wishlist addToWishlist(Product product) {
-        return wishlistService.addToWishlist(product);
+    public ResponseEntity<Wishlist> addToWishlist(Product product) {
+        Wishlist body =  wishlistService.addToWishlist(product);
+        return new ResponseEntity<>(body, HttpStatus.OK);
     }
 
     @DeleteMapping("/{productId}")
-    public Wishlist deleteFromWishlist(@PathVariable String productId) {
-        return wishlistService.deleteFromWishlist(productId);
+    public ResponseEntity<Wishlist> deleteFromWishlist(@PathVariable String productId) {
+        Wishlist body =  wishlistService.deleteFromWishlist(productId);
+        return new ResponseEntity<>(body, HttpStatus.OK);
     }
 }
