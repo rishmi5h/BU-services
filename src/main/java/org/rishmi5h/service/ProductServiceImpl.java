@@ -1,5 +1,6 @@
 package org.rishmi5h.service;
 
+import org.rishmi5h.exception.ProductNotExistException;
 import org.rishmi5h.model.Product;
 import org.rishmi5h.repository.ProductRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,7 +19,10 @@ public class ProductServiceImpl implements ProductService {
         return productRepository.findAll();
     }
 
-    public Optional<Product> getProduct(Long productId) {
-        return productRepository.findById(productId);
+    public Product getProduct(Long productId) {
+        Optional<Product> optionalProduct = productRepository.findById(productId);
+        if (!optionalProduct.isPresent())
+            throw new ProductNotExistException("Product id is invalid " + productId);
+        return optionalProduct.get();
     }
 }
