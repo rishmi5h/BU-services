@@ -1,17 +1,21 @@
 package org.rishmi5h.service;
 
+import org.rishmi5h.dto.Cart.AddToCartDto;
 import org.rishmi5h.model.Cart;
 import org.rishmi5h.model.Product;
+import org.rishmi5h.model.Users;
 import org.springframework.validation.annotation.Validated;
+
+import java.util.List;
 
 @Validated
 public interface CartService {
 
-   String getCart();
+    List<Cart> getCart();
 
-    Iterable<Cart> addToCart(Product product);
+    void addToCart(AddToCartDto addToCartDto, Product product);
 
-    Iterable<Cart> removeFromCart(String productId);
+    List<Cart> removeFromCart(String productId);
 
-    Iterable<Cart> updateCart(String productId, String quantity);
+    List<Cart> updateCart(String productId, String quantity);
 }

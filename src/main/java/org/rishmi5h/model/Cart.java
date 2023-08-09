@@ -1,7 +1,6 @@
 package org.rishmi5h.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import io.swagger.models.auth.In;
 import jakarta.persistence.*;
 
 import java.util.Date;
@@ -11,21 +10,27 @@ import java.util.Date;
 public class Cart {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE,
+            generator="cart_cart_id_seq")
+    @SequenceGenerator(name="cart_cart_id_seq",
+            sequenceName="cart_cart_id_seq",
+            allocationSize=1)
+    @Column(name = "cart_id")
     private Long cartId;
+
 
 
     @Column(name = "created_date")
     private Date createdDate;
 
     @ManyToOne
-    @JoinColumn(name = "product_id", referencedColumnName = "productId")
+    @JoinColumn(name = "product_id", referencedColumnName = "product_id")
     private Product product;
 
-    @JsonIgnore
-    @OneToOne(targetEntity = Users.class, fetch = FetchType.EAGER)
-    @JoinColumn(nullable = false, name = "user_id")
-    private Users user;
+//    @JsonIgnore
+//    @OneToOne(targetEntity = Users.class, fetch = FetchType.EAGER)
+//    @JoinColumn(nullable = false, name = "user_id")
+//    private Users user;
 
 
     private int quantity;
@@ -33,8 +38,8 @@ public class Cart {
     public Cart() {
     }
 
-    public Cart(Product product, int quantity, Users user){
-        this.user = user;
+    public Cart(Product product, int quantity){
+//        this.user = user;
         this.product = product;
         this.quantity = quantity;
         this.createdDate = new Date();
@@ -48,13 +53,13 @@ public class Cart {
         this.cartId = cartId;
     }
 
-    public Users getUser() {
-        return user;
-    }
-
-    public void setUser(Users user) {
-        this.user = user;
-    }
+//    public Users getUser() {
+//        return user;
+//    }
+//
+//    public void setUser(Users user) {
+//        this.user = user;
+//    }
 
     public int getQuantity() {
         return quantity;
