@@ -29,8 +29,8 @@ public class ProductController {
     }
 
     @GetMapping("/{productId}")
-    public ResponseEntity<Optional<Product>> getProduct(@PathVariable Long productId) {
-        Optional<Product> body =  productService.getProduct(productId);
+    public ResponseEntity<Product> getProduct(@PathVariable Long productId) {
+        Product body =  productService.getProduct(productId);
         return new ResponseEntity<>(body, HttpStatus.OK);
     }
 }
