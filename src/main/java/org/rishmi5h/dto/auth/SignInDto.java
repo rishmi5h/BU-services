@@ -7,22 +7,6 @@ public class SignInDto {
     private String email;
     private String password;
 
-
-    SignInDto(){
-
-    }
-
-    @Override
-    public String toString(){
-        return "SignInDto{" +
-                "email=" + email +
-                ", password=" + password +
-                ", firstName=" + firstName +
-                ", lastName=" + lastName +
-                ",";
-    }
-
-
     public String getEmail() {
         return email;
     }
@@ -53,5 +37,13 @@ public class SignInDto {
 
     public void setLastName(String lastName) {
         this.lastName = lastName;
+    }
+
+
+    public SignInDto(String firstName, String lastName, String email, String password){
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.email = email;
+        this.password = password;
     }
 }

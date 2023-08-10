@@ -5,19 +5,6 @@ public class LoginDto {
     private String email;
     private String password;
 
-
-    LoginDto(){
-
-    }
-
-    @Override
-    public String toString(){
-        return "LoginDto{" +
-                "email=" + email +
-                ", password=" + password +
-                ",";
-    }
-
     public String getPassword() {
         return password;
     }
@@ -32,5 +19,10 @@ public class LoginDto {
 
     public String getEmail() {
         return email;
+    }
+
+    public LoginDto(String email, String password){
+        this.email = email;
+        this.password = password;
     }
 }
