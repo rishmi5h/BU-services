@@ -2,6 +2,7 @@ package org.rishmi5h.controller;
 
 import org.rishmi5h.common.ApiResponse;
 import org.rishmi5h.dto.Cart.AddToCartDto;
+import org.rishmi5h.dto.Cart.CartDto;
 import org.rishmi5h.model.Cart;
 import org.rishmi5h.model.Product;
 import org.rishmi5h.model.Users;
@@ -30,25 +31,25 @@ public class CartController {
     }
 
     @GetMapping
-    public ResponseEntity<List<Cart>> getCart() {
-        List<Cart> body = cartService.getCart();
+    public ResponseEntity<CartDto> getCart() {
+        CartDto body = cartService.getCart();
         return new ResponseEntity<>(body, HttpStatus.OK);
     }
 
-    @PostMapping
+    @PostMapping("/add")
     public ResponseEntity<ApiResponse> addToCart(@RequestBody AddToCartDto addToCartDto) {
         Product product = productService.getProduct(addToCartDto.getProductId());
         cartService.addToCart(addToCartDto, product);
         return new ResponseEntity<ApiResponse>(new ApiResponse(true, "Added to cart"), HttpStatus.CREATED);
     }
 
-    @DeleteMapping("/{productId}")
+    @DeleteMapping("/remove/{productId}")
     public ResponseEntity<List<Cart>> removeFromCart(@PathVariable String productId) {
         List<Cart> body =  cartService.removeFromCart(productId);
         return new ResponseEntity<>(body, HttpStatus.OK);
     }
 
-    @PostMapping("/{productId}")
+    @PostMapping("/update/{productId}")
     public ResponseEntity<List<Cart>> updateCart(@PathVariable String productId, @RequestBody String Quantity) {
         List<Cart> body = cartService.updateCart(productId, Quantity);
         return new ResponseEntity<>(body, HttpStatus.OK);
